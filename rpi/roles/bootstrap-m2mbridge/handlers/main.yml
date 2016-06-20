@@ -1,0 +1,4 @@
+---
+- name: restart m2mbridge
+  become: yes
+  service: name=m2mbridge state=restarted

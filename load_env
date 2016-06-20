@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DIR=$(pwd)
+
+export ANSIBLE_INVENTORY=$DIR/static_inventory
+
+export ANSIBLE_HOST_KEY_CHECKING=False

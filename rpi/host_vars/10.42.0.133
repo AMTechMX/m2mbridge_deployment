@@ -1,0 +1,9 @@
+plugins_enabled: [ SNMPDevice, LLRPReader ]
+bridge_description: Amtech M2M Bridge
+template_id: m2mCreator:m2mBridge
+bridge_id_prefix: tienda1
+location: {"wkt":"POINT(-99.17125583 19.40501031)","sContext":"geo"}
+address_country: usa
+address_city: Las Vegas
+address_road: Las Vegas Boulevard South
+address_number: 3960

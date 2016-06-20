@@ -1,0 +1,20 @@
+{
+    "description" : "{{ bridge_description }}",
+    "description:children" : true,
+    "dap" : {
+        "dapUrl" : "{{ dap_url }}",
+        "userId" : "{{ dap_user }}",
+        "tenant" : "{{ dap_tenant }}",
+        "password" : "{{ dap_password }}"
+    },
+    "templateId" : "{{ template_id }}",
+    "bridgeIdPrefix" : "{{ bridge_id_prefix }}",
+    "location" : "{{ location|to_json|safe|replace("\\", "\\\\")|replace("\"", "\\\"") }}",
+    "location:children" : true,
+    "address" : {
+        "country" : "{{ address_country }}",
+        "city" : "{{ address_city }}",
+        "road" : "{{ address_road }}",
+        "number" : "{{ address_number }}"
+    }
+}

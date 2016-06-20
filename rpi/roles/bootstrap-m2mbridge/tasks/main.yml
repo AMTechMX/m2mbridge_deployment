@@ -1,0 +1,34 @@
+---
+- name: Clone M2MBridge repository
+  git: repo=https://github.com/AMTechMX/M2MBridge dest=/home/amtech/m2mbridge force=yes
+
+- name: Download dependencies
+  command: npm install
+  args:
+    chdir: /home/amtech/m2mbridge
+
+- name: Download dependencies for each enabled plugin
+  command: npm install
+  args:
+    chdir: /home/amtech/m2mbridge/plugins/{{ item }}
+  with_items: "{{ plugins_enabled }}"
+
+- name: Create bridgeConfig.json
+  template: src=bridgeConfig.json dest=/home/amtech/m2mbridge/bridgeConfig.json mode=0644
+  notify: restart m2mbridge
+
+- name: Copy M2MBridge starter script
+  become: yes
+  copy: src=m2mbridge-start.sh dest=/usr/local/sbin/m2mbridge-start.sh owner=root group=root mode=0755
+
+- name: Create log directory
+  become: yes
+  file: dest=/var/log/m2mbridge state=directory owner=amtech group=amtech mode=0755
+
+- name: Create M2MBridge service conf
+  become: yes
+  copy: src=m2mbridge.service dest=/etc/systemd/system/m2mbridge.service owner=root group=root mode=0644
+
+- name: Start M2MBridge service
+  become: yes
+  service: name=m2mbridge enabled=yes state=started

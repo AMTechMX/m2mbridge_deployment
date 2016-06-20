@@ -1,0 +1,8 @@
+---
+- name: Bootstrap M2MBridge
+  hosts: rpis
+  user: amtech
+  gather_facts: yes
+
+  roles:
+    - bootstrap-m2mbridge

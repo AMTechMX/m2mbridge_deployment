@@ -1,0 +1,11 @@
+[Unit]
+Description=Node server for M2MBridge
+After=network.target
+
+[Service]
+Type=notify
+Restart=on-failure
+ExecStart=/usr/local/sbin/m2mbridge-start.sh
+
+[Install]
+WantedBy=multi-user.target
