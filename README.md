@@ -6,8 +6,8 @@
 These playbooks deploy instances of M2MBridge and setup startup systemd
 services intended to run in Ubuntu 16.04.
 
-You need to configure your inventory of raspberrypis to configure in 
-static_inventory and then execute the load_env script as:
+You need to configure your inventory of raspberrypis in the
+static_inventory file and then execute the load_env script as:
 
     . load_env
 
@@ -17,4 +17,3 @@ Then change directory to rpi and run the playbook, like this:
 
 When the playbook run completes, you should be able to see all your rpis
 configured.
-
